@@ -9,4 +9,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://ksquaredcoding.github.io/kacie-website',
+  base: '/kacie-website'
 });
