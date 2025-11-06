@@ -1,0 +1,34 @@
+---
+import background from "../../public/images/Hero_Image-01.jpg";
+---
+
+<div class="min-h-screen bg-background">
+  <section
+    class="relative w-full mx-0 min-h-[90vh] flex items-center h-full justify-center overflow-hidden"
+  >
+    <div class="absolute inset-0 z-0">
+      <img
+        class="w-full h-full object-cover"
+        src={background.src}
+        alt=""
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-background/30"></div>
+    </div>
+    <div class="flex flex-col h-full!">
+      <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <div style="opacity: 1; transform: none;">
+          <h1 class="font-heading text-5xl text-primary mb-6 leading-tight">
+            Graphic Designer & Artist
+          </h1>
+          <!-- <p
+            class="font-paragraph text-xl md:text-2xl text-primary/80 mb-8 leading-relaxed"
+          >
+            Graphic Designer & Artist
+          </p> -->
+          <div style="opacity: 1; transform: none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,42 @@
+---
+const onHomePage = Astro.url.pathname === "/";
+---
+
+<nav
+  class="absolute top-0 z-20 flex items-center justify-between w-full px-6 py-6"
+>
+  <div>
+    {
+      !onHomePage && (
+        <a href="/" aria-label="Home">
+          <span class="font-heading text-2xl text-primary font-bold">
+            Kacie Fromhart
+          </span>
+        </a>
+      )
+    }
+  </div>
+  <div class="flex items-center space-x-8">
+    <a
+      class="font-paragraph text-primary hover:text-secondary transition-colors font-medium"
+      href="/"
+      data-discover="true"
+    >
+      Work
+    </a>
+    <a
+      class="font-paragraph text-primary hover:text-secondary transition-colors font-medium"
+      href="/about"
+      data-discover="true"
+    >
+      About
+    </a>
+    <a
+      class="font-paragraph text-primary hover:text-secondary transition-colors font-medium"
+      href="/contact"
+      data-discover="true"
+    >
+      Contact
+    </a>
+  </div>
+</nav>

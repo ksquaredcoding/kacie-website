@@ -1,0 +1,423 @@
+<section class="py-20 px-6 max-w-400 mx-auto">
+  <div class="text-center mb-16" style="opacity: 1; transform: none;">
+    <h1
+      class="font-heading text-5xl md:text-6xl text-primary mb-6 leading-tight"
+    >
+      Let's Start a
+      <br />
+      <span class="text-secondary"> Conversation </span>
+    </h1>
+    <p
+      class="font-paragraph text-lg text-primary/80 max-w-3xl mx-auto leading-relaxed"
+    >
+      Ready to bring your vision to life? I'd love to hear about your project
+      and explore how we can create something extraordinary together. Let's
+      discuss your goals and make it happen.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+    <div class="lg:col-span-2">
+      <div style="opacity: 1; transform: none;">
+        <div
+          class="border-foreground/10 text-foreground border-0 shadow-2xl bg-background rounded-2xl"
+        >
+          <div class="p-8">
+            <h2 class="font-heading text-3xl text-primary mb-8">
+              Tell Me About Your Project
+            </h2>
+            <form class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-paragraph text-primary font-medium"
+                    for="name"
+                  >
+                    Full Name *
+                  </label>
+                  <input
+                    class="flex h-10 w-full border bg-transparent px-4 py-1 text-base text-foreground shadow-sm transition-colors hover:border-foreground/30 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-primary-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-border focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-2 border-primary/20 focus:border-primary rounded-xl"
+                    id="name"
+                    name="name"
+                    required=""
+                    placeholder="Your full name"
+                    value=""
+                  />
+                </div>
+                <div>
+                  <label
+                    class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-paragraph text-primary font-medium"
+                    for="email"
+                  >
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    class="flex h-10 w-full border bg-transparent px-4 py-1 text-base text-foreground shadow-sm transition-colors hover:border-foreground/30 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-primary-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-border focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-2 border-primary/20 focus:border-primary rounded-xl"
+                    id="email"
+                    name="email"
+                    required=""
+                    placeholder="your@email.com"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-paragraph text-primary font-medium"
+                    for="company"
+                  >
+                    Company/Organization
+                  </label>
+                  <input
+                    class="flex h-10 w-full border bg-transparent px-4 py-1 text-base text-foreground shadow-sm transition-colors hover:border-foreground/30 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-primary-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-border focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-2 border-primary/20 focus:border-primary rounded-xl"
+                    id="company"
+                    name="company"
+                    placeholder="Your company name"
+                    value=""
+                  />
+                </div>
+                <div>
+                  <label
+                    class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-paragraph text-primary font-medium"
+                    for="projectType"
+                  >
+                    Project Type
+                  </label>
+                  <select
+                    id="projectType"
+                    name="projectType"
+                    class="mt-2 w-full px-3 py-2 border border-primary/20 rounded-xl focus:border-primary focus:outline-none bg-background font-paragraph"
+                    data-dynamic="value"
+                  >
+                    <option value="">Select project type</option>
+                    <option value="Brand Identity" data-dynamic="text value">
+                      Brand Identity
+                    </option>
+                    <option value="Logo Design" data-dynamic="text value">
+                      Logo Design
+                    </option>
+                    <option value="Print Design" data-dynamic="text value">
+                      Print Design
+                    </option>
+                    <option value="Digital Design" data-dynamic="text value">
+                      Digital Design
+                    </option>
+                    <option value="Packaging" data-dynamic="text value">
+                      Packaging
+                    </option>
+                    <option value="Web Graphics" data-dynamic="text value">
+                      Web Graphics
+                    </option>
+                    <option value="Other" data-dynamic="text value">
+                      Other
+                    </option>
+                  </select>
+                </div>
+              </div><div>
+                <label
+                  class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-paragraph text-primary font-medium"
+                  for="budget"
+                >
+                  Project Budget
+                </label>
+                <select
+                  id="budget"
+                  name="budget"
+                  class="mt-2 w-full px-3 py-2 border border-primary/20 rounded-xl focus:border-primary focus:outline-none bg-background font-paragraph"
+                  data-dynamic="value"
+                >
+                  <option value="">Select budget range</option>
+                  <option value="$1,000 - $5,000" data-dynamic="text value"
+                    >$1,000 - $5,000
+                  </option>
+                  <option value="$5,000 - $10,000" data-dynamic="text value"
+                    >$5,000 - $10,000
+                  </option>
+                  <option value="$10,000 - $25,000" data-dynamic="text value"
+                    >$10,000 - $25,000
+                  </option>
+                  <option value="$25,000+" data-dynamic="text value"
+                    >$25,000+
+                  </option>
+                  <option value="Let's discuss" data-dynamic="text value">
+                    Let's discuss
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-paragraph text-primary font-medium"
+                  for="message"
+                >
+                  Project Details *
+                </label>
+                <textarea
+                  class="flex min-h-[60px] w-full border bg-transparent px-3 py-2 text-base text-foreground shadow-sm placeholder:text-foreground/50 hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-border focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-2 border-primary/20 focus:border-primary rounded-xl resize-none"
+                  id="message"
+                  name="message"
+                  required=""
+                  rows="6"
+                  placeholder="Tell me about your project goals, timeline, and any specific requirements..."
+                >
+                </textarea>
+              </div>
+              <button
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-normal transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow h-10 px-8 w-full bg-primary hover:bg-primary/90 text-primary-foreground font-paragraph text-lg py-4 rounded-xl"
+                type="submit"
+              >
+                Send Message
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-send ml-2 h-5 w-5"
+                >
+                  <path
+                    d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"
+                  ></path><path d="m21.854 2.147-10.94 10.939"></path>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-1">
+      <div class="space-y-8" style="opacity: 1; transform: none;">
+        <h3 class="font-heading text-2xl text-primary mb-6">Get In Touch</h3>
+        <p class="font-paragraph text-primary/70 leading-relaxed mb-8">
+          I typically respond to all inquiries within 24 hours. For urgent
+          projects, feel free to call directly.
+        </p>
+      </div>
+      <div class="space-y-6 mb-6">
+        <div style="opacity: 1; transform: none;">
+          <div
+            class="border-foreground/10 text-foreground border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-soft-peach/20 rounded-2xl"
+          >
+            <div class="p-6">
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-mail h-6 w-6 text-primary"
+                  >
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect><path
+                      d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4
+                    class="font-heading text-lg text-primary mb-1"
+                    data-dynamic="text"
+                  >
+                    Email
+                  </h4>
+                  <p
+                    class="font-paragraph text-primary font-medium mb-1"
+                    data-dynamic="text"
+                  >
+                    hello@creativestudio.com
+                  </p>
+                  <p
+                    class="font-paragraph text-primary/60 text-sm"
+                    data-dynamic="text"
+                  >
+                    Drop me a line anytime
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="opacity: 1; transform: none;">
+          <div
+            class="border-foreground/10 text-foreground border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-soft-peach/20 rounded-2xl"
+          >
+            <div class="p-6">
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-phone h-6 w-6 text-primary"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4
+                    class="font-heading text-lg text-primary mb-1"
+                    data-dynamic="text"
+                  >
+                    Phone
+                  </h4>
+                  <p
+                    class="font-paragraph text-primary font-medium mb-1"
+                    data-dynamic="text"
+                  >
+                    +1 (555) 123-4567
+                  </p>
+                  <p
+                    class="font-paragraph text-primary/60 text-sm"
+                    data-dynamic="text"
+                  >
+                    Mon-Fri 9AM-6PM EST
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="opacity: 1; transform: none;">
+          <div
+            class="border-foreground/10 text-foreground border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-soft-peach/20 rounded-2xl"
+          >
+            <div class="p-6">
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-map-pin h-6 w-6 text-primary"
+                  >
+                    <path
+                      d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                    ></path><circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h4
+                    class="font-heading text-lg text-primary mb-1"
+                    data-dynamic="text"
+                  >
+                    Location
+                  </h4>
+                  <p
+                    class="font-paragraph text-primary font-medium mb-1"
+                    data-dynamic="text"
+                  >
+                    New York, NY
+                  </p>
+                  <p
+                    class="font-paragraph text-primary/60 text-sm"
+                    data-dynamic="text"
+                  >
+                    Available for remote work
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-background border-2 border-soft-peach rounded-2xl p-6"
+        style="opacity: 1; transform: none;"
+      >
+        <h4 class="font-heading text-xl text-primary mb-4">Quick Questions?</h4>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-circle-check-big h-4 w-4 text-secondary mt-0.5 shrink-0"
+            >
+              <path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path
+                d="m9 11 3 3L22 4"></path>
+            </svg>
+            <p class="font-paragraph text-primary/70">
+              <strong>Timeline:</strong> Most projects take 2-6 weeks depending on
+              scope
+            </p>
+          </div>
+          <div class="flex items-start space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-circle-check-big h-4 w-4 text-secondary mt-0.5 shrink-0"
+            >
+              <path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path
+                d="m9 11 3 3L22 4"></path>
+            </svg>
+            <p class="font-paragraph text-primary/70">
+              <strong>Process:</strong> Discovery → Concepts → Revisions → Final
+              delivery
+            </p>
+          </div>
+          <div class="flex items-start space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-circle-check-big h-4 w-4 text-secondary mt-0.5 shrink-0"
+            >
+              <path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path
+                d="m9 11 3 3L22 4"></path>
+            </svg>
+            <p class="font-paragraph text-primary/70">
+              <strong>Files:</strong> All source files and usage rights included
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
