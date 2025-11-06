@@ -8,6 +8,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://ksquaredcodind.github.io',
+  site: 'https://ksquaredcoding.github.io',
   base: '/kacie-website'
 });
