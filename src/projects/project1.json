@@ -3,5 +3,5 @@
     "year": [2025],
     "client": "Nathan Raia",
     "blurb": "A cover for the second book of the Ascending Tragedy series by Nathan Raia. This book is scheduled to be published in 2026.",
-    "images": ["kacie-website/images/Ascending_Tragedy_Mockup.jpg", "/images/Ascending_Tragedy_Mockup.jpg"]
+    "images": ["/kacie-website/images/Ascending_Tragedy_Mockup.jpg", "/images/Ascending_Tragedy_Mockup.jpg"]
 }
