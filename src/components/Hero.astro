@@ -4,18 +4,24 @@ import background from "../../public/images/Hero_Image-01.jpg";
 
 <div class="min-h-screen bg-background">
   <section
-    class="relative w-full mx-0 min-h-[90vh] flex items-center h-full justify-center overflow-hidden"
+    class="relative w-full mx-0 min-h-[70vh] lg:min-h-[90vh] flex items-center h-full justify-center overflow-hidden"
   >
     <div class="absolute inset-0 z-0">
       <img
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover object-[52%] object-view-inset block md:hidden"
+        src={background.src}
+        alt=""
+        fetchpriority="high"
+      />
+      <img
+        class="w-full h-full object-cover hidden md:block"
         src={background.src}
         alt=""
         fetchpriority="high"
       />
       <div class="absolute inset-0 bg-background/30"></div>
     </div>
-    <div class="flex flex-col w-3/4 h-[70vh] md:h-[60vh] justify-end items-end">
+    <div class="flex flex-col w-3/4 h-[40vh] md:h-[60vh] justify-end items-end">
       <div class="relative z-10 text-center px-6 max-w-4xl">
         <div style="opacity: 1; transform: none;">
           <h1
