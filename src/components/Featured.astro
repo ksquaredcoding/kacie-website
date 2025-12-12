@@ -19,30 +19,24 @@ const projects = await getCollection("projects");
       </h2>
     </div>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-3/4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
     {
       projects.map((project: { id: string, data: { images: string[]; client: string; year: number[]; title: string; blurb: string; }; }) => (
         <div>
-          <div class="border-foreground/10 cursor-pointer h-130 text-foreground group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-background rounded-2xl"
+          <div class="border-foreground/10 cursor-pointer h-204 text-foreground group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-background rounded-2xl"
             onclick=`openModal("${project.id}")`
           >
-            <div class="relative overflow-hidden">
+            <div class="relative">
               <img
                 src=`${project.data.images[0]}`
                 alt=`${project.data.title} project image`
-                class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                class="w-full h-140 object-cover group-hover:scale-110 transition-transform duration-700"
                 width="400"
                 data-dynamic="alt src"
               />
             </div>
             <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <div
-                  class="inline-flex items-center rounded-md border px-2.5 py-1.5 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-soft-peach text-primary font-paragraph"
-                  data-dynamic="className"
-                >
-                  {project.data.client}
-                </div>
+              <div class="flex items-center justify-start mb-3">
                 <div
                   class="flex items-center text-primary/60 text-sm"
                   data-dynamic="text"
@@ -70,13 +64,13 @@ const projects = await getCollection("projects");
                 </div>
               </div>
               <h3
-                class="font-heading text-xl text-primary mb-2 group-hover:text-secondary transition-colors"
+                class="font-heading text-4xl text-primary mb-2 group-hover:text-secondary transition-colors"
                 data-dynamic="text"
               >
                 {project.data.title}
               </h3>
               <p
-                class="font-paragraph text-primary/80 text-sm leading-relaxed"
+                class="font-paragraph text-black font-normal text-2xl leading-relaxed"
                 data-dynamic="text"
               >
                 {project.data.blurb}
