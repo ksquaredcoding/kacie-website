@@ -1,7 +1,8 @@
 {
     "title": "Social Media Graphics",
     "year": [2023, 2025],
+    "order": 97,
     "client": "UT Physicians",
     "blurb": "As a leading health care provider in the Houston area, UT Physicians aims to educate our community as well as provide exceptional care. Our marketing team collaborates with physicians to share timely health information with the public. I present that information in carousels, animated graphics, and static graphics for Instagram, X, Facebook, and LinkedIn.",
-    "images": ["/images/Social_Media_Graphics.jpg"]
+    "images": ["/images/Social-Media-Ads-01.jpg", "/images/Social-Media-Ads-02.jpg", "/images/Social-Media-Ads-03.jpg", "/images/Social-Media-Ads-04.jpg"]
 }

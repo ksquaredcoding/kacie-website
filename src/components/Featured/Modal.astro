@@ -13,7 +13,8 @@ const { projects } = Astro.props;
       class="text-gray-300 float-right text-3xl font-bold hover:text-black hover:cursor-pointer focus:cursor-pointer focus:text-black"
       >&times;</span
     >
-    <div class="relative overflow-hidden">
+    {}
+    <div id="modalImageContainer" class="relative overflow-hidden hidden">
       <img
         src=""
         id="modalImage"
@@ -21,9 +22,29 @@ const { projects } = Astro.props;
         class="object-cover group-hover:scale-110 transition-transform duration-700 w-300"
         data-dynamic="alt src"
       />
+      <button
+        id="prevBtn"
+        class="absolute left-0 top-1/2 transform cursor-pointer -translate-y-1/2 bg-gray-200 p-2 rounded"
+        >❮</button
+      >
+      <button
+        id="nextBtn"
+        class="absolute right-0 top-1/2 transform cursor-pointer -translate-y-1/2 bg-gray-200 p-2 rounded"
+        >❯</button
+      >
+    </div>
+    <div id="modalIframeContainer" class="relative overflow-hidden hidden">
+      <iframe
+        id="modalIframe"
+        src=""
+        class="w-300 h-200"
+        seamless="seamless"
+        scrolling="no"
+        allow="autoplay; clipboard-read; clipboard-write"></iframe>
     </div>
   </div>
 </div>
+
 <style>
   /* The Close Button */
   .close {
@@ -50,29 +71,73 @@ const { projects } = Astro.props;
   // Get the image element
   var modalImage = document.getElementById("modalImage");
 
+  var modalImageContainer = document.getElementById("modalImageContainer");
+  var modalIframeContainer = document.getElementById("modalIframeContainer");
+
+  var prevBtn = document.getElementById("prevBtn");
+
+  var nextBtn = document.getElementById("nextBtn");
+
+  var activeProject = null;
+  var currentImageIndex = 0;
+
   // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
-    modal.style.display = "none";
+    closeModal();
   };
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+      closeModal();
     }
   };
 
   window.onkeydown = function (event) {
     if (event.key === "Escape" && modal.style.display === "block") {
-      modal.style.display = "none";
+      closeModal();
     }
   };
 
+  function closeModal() {
+    modal.style.display = "none";
+    activeProject = null;
+    currentImageIndex = 0;
+    modalIframeContainer.classList.add("hidden");
+    modalImageContainer.classList.add("hidden");
+    modalIframeContainer.classList.remove("block");
+    modalImageContainer.classList.remove("block");
+  }
+
   function openModal(projectId) {
-    let project = projects.find((p) => p.id === projectId);
-    modalImage.src = project.data.images[0];
+    activeProject = projects.find((p) => p.id === projectId);
+    if (activeProject.data.iframe !== undefined) {
+      modalIframe.src = activeProject.data.iframe;
+      modalIframeContainer.classList.remove("hidden");
+      modalIframeContainer.classList.add("block");
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+    } else {
+      modalImage.src = activeProject.data.images[0];
+      modalImageContainer.classList.remove("hidden");
+      modalImageContainer.classList.add("block");
+    }
     modal.style.display = "block";
   }
+
+  prevBtn.onclick = function () {
+    let prevIndex =
+      (currentImageIndex - 1 + activeProject.data.images.length) %
+      activeProject.data.images.length;
+    currentImageIndex = prevIndex;
+    modalImage.src = activeProject.data.images[prevIndex];
+  };
+
+  nextBtn.onclick = function () {
+    let nextIndex = (currentImageIndex + 1) % activeProject.data.images.length;
+    currentImageIndex = nextIndex;
+    modalImage.src = activeProject.data.images[nextIndex];
+  };
 
   document.openModal = openModal;
 </script>

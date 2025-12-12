@@ -6,7 +6,7 @@
   }
   
   body {
-    background-color: #fff9f2;
+    background-color: #fff;
   }
   
   .text-2xl {
@@ -84,11 +84,12 @@
     /* Custom theme configurations can be added here */
     --color-primary: #AA0844;
     --color-primary-foreground: #fff9f2;
-    --color-secondary: #FD9C2B;
+    --color-secondary: #e48312;
+    --color-autumn: #AD570b;
     --color-secondary-foreground: #fff9f2;
     --font-family-paragraph: open sans;
     --font-heading: caveat, cursive;
-    --color-background: #fff9f2;
+    --color-background: #feffff;
     --color-foreground: #000000;
     --color-soft-peach: #fbdfbe;
 }

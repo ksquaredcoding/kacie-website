@@ -13,6 +13,8 @@ const projects = defineCollection({
         client: z.string(),
         images: z.array(z.string()),
         year: z.array(z.number()).optional(),
+        order: z.number(),
+        iframe: z.string().optional(),
     }),
  });
 

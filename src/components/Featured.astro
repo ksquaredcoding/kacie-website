@@ -4,7 +4,10 @@ import { getCollection } from "astro:content";
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
-const projects = await getCollection("projects");
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.order.valueOf() - a.data.order.valueOf(),
+);
+;
 ---
 
 <section
@@ -14,23 +17,23 @@ const projects = await getCollection("projects");
 >
   <div class="text-center mb-16">
     <div style="opacity: 1; transform: none;">
-      <h2 class="font-heading text-4xl md:text-5xl text-primary mb-6">
+      <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary mb-6">
         Featured Projects
       </h2>
     </div>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
     {
-      projects.map((project: { id: string, data: { images: string[]; client: string; year: number[]; title: string; blurb: string; }; }) => (
+      projects.map((project: { id: string; data: { images: string[]; client: string; year?: number[]; order?: number; title: string; blurb: string; iframe?: string; }; }) => (
         <div>
-          <div class="border-foreground/10 cursor-pointer h-204 text-foreground group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-background rounded-2xl"
+          <div class="border-foreground/10 cursor-pointer h-164 md:h-204 text-foreground group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-background rounded-2xl"
             onclick=`openModal("${project.id}")`
           >
             <div class="relative">
               <img
                 src=`${project.data.images[0]}`
                 alt=`${project.data.title} project image`
-                class="w-full h-140 object-cover group-hover:scale-110 transition-transform duration-700"
+                class="w-full h-100 md:h-140 object-cover hover:scale-110 transition-transform duration-700"
                 width="400"
                 data-dynamic="alt src"
               />
@@ -38,7 +41,7 @@ const projects = await getCollection("projects");
             <div class="p-6">
               <div class="flex items-center justify-start mb-3">
                 <div
-                  class="flex items-center text-primary/60 text-sm"
+                  class="flex items-center text-autumn text-xl"
                   data-dynamic="text"
                 >
                   <svg
@@ -60,21 +63,25 @@ const projects = await getCollection("projects");
                       <path d="M3 10h18" />
                     </>
                   </svg>
-                  {project.data.year.join('-')}
+                  <span>
+                    {project.data.year?.join('-')}
+                  </span>
                 </div>
               </div>
               <h3
-                class="font-heading text-4xl text-primary mb-2 group-hover:text-secondary transition-colors"
+                class="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl text-primary mb-2 group-hover:text-secondary transition-colors"
                 data-dynamic="text"
               >
                 {project.data.title}
               </h3>
+              <div class="overflow-y-scroll">
               <p
-                class="font-paragraph text-black font-normal text-2xl leading-relaxed"
+                class="font-paragraph text-black font-normal text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed overflow-y-auto max-h-40"
                 data-dynamic="text"
               >
                 {project.data.blurb}
               </p>
+              </div>
             </div>
           </div>
         </div>
