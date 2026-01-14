@@ -26,14 +26,14 @@ const projects = (await getCollection("projects")).sort(
     {
       projects.map((project: { id: string; data: { images: string[]; client: string; year?: number[]; order?: number; title: string; blurb: string; iframe?: string; }; }) => (
         <div>
-          <div class="border-foreground/10 cursor-pointer h-164 md:h-204 text-foreground group overflow-hidden border shadow-xl hover:shadow-2xl transition-all duration-500 bg-background rounded-2xl"
+          <div class="border-foreground/10 cursor-pointer h-124 md:h-144 lg:h-158 xl:h-194 2xl:h-214 text-foreground group overflow-hidden border shadow-xl hover:shadow-2xl transition-all duration-500 bg-background rounded-2xl"
             onclick=`openModal("${project.id}")`
           >
             <div class="relative">
               <img
                 src=`${project.data.images[0]}`
                 alt=`${project.data.title} project image`
-                class="w-full h-100 md:h-140 object-scale-down hover:scale-110 transition-transform duration-700"
+                class="w-full h-60 md:h-80 lg:h-100 xl:h-120 2xl:h-140 object-scale-down hover:scale-110 transition-transform duration-700"
                 width="400"
                 data-dynamic="alt src"
               />
