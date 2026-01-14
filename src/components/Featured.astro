@@ -33,7 +33,7 @@ const projects = (await getCollection("projects")).sort(
               <img
                 src=`${project.data.images[0]}`
                 alt=`${project.data.title} project image`
-                class="w-full h-100 md:h-140 object-cover hover:scale-110 transition-transform duration-700"
+                class="w-full h-100 md:h-140 object-scale-down hover:scale-110 transition-transform duration-700"
                 width="400"
                 data-dynamic="alt src"
               />
