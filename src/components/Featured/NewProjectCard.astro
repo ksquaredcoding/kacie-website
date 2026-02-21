@@ -1,0 +1,36 @@
+---
+const { project } = Astro.props;
+let hover = false;
+---
+
+<div
+  class="relative cursor-pointer p-6 w-full h-full overflow-hidden"
+  onclick=`openModal("${project.id}")`
+  onmouseenter="hover = true"
+  onmouseleave="hover = false"
+>
+  <div
+    class="text-white/0 bg-white/0 text-center z-10 h-full hover:bg-white/80 absolute flex flex-col justify-center align-middle transition-transform duration-700 hover:text-primary"
+  >
+    <div class="w-fit">
+      <h3
+        class="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl transition-colors mb-2"
+        data-dynamic="text"
+      >
+        {project.data.title}
+      </h3>
+      <p
+        class="mt-2 font-paragraph font-normal text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed overflow-y-auto max-h-40 pb-6"
+        data-dynamic="text"
+      >
+        {project.data.blurb}
+      </p>
+    </div>
+  </div>
+  <img
+    src=`${project.data.images[0]}`
+    alt=`${project.data.title} project image`
+    class="w-full max-w-2xl block h-80 md:h-120 lg:h-160 object-contain object-center aspect-5/4"
+    data-dynamic="alt src"
+  />
+</div>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @layer base {
@@ -75,9 +76,6 @@
         letter-spacing: .02em;
         font-weight: 400
     }
-    .object-view-inset {
-        object-view-box: inset(-30%);
-    }
 }
 
 @theme {
@@ -88,7 +86,7 @@
     --color-autumn: #AD570b;
     --color-secondary-foreground: #fff9f2;
     --font-family-paragraph: open sans;
-    --font-heading: caveat, cursive;
+    --font-heading: comfortaa, caveat, cursive;
     --color-background: #feffff;
     --color-foreground: #000000;
     --color-soft-peach: #fbdfbe;

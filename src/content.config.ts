@@ -15,6 +15,7 @@ const projects = defineCollection({
         year: z.array(z.number()).optional(),
         order: z.number(),
         iframe: z.string().optional(),
+        projectType: z.string().optional(),
     }),
  });
 

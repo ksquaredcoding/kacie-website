@@ -1,9 +1,10 @@
 {
     "title": "Soups, Stews, & Chili",
+    "projectType": "book",
     "year": [2025],
-    "order": 100,
+    "order": 7,
     "client": "Personal Project",
-    "blurb": "A digital recipe book full of UTP employee favorites, for which I did the food styling, photography, and design.",
+    "blurb": "A digital recipe book full of UTP employee favorites, for which I did the food styling, photography, and cover/interior design.",
     "images": ["/images/Soup-stew-and-chili-Mockup.jpg"],
     "iframe": "https://player.flipsnack.com?hash=OEZGQUNDRkY4RDYrdG5pZXB1Y3J6cA=="
 }

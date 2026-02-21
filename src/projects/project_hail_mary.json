@@ -1,0 +1,9 @@
+{
+    "title": "Project Hail Mary",
+    "projectType": "book",
+    "year": [2025],
+    "order": 100,
+    "client": "Andy Weir",
+    "blurb": "This is a cover for the book Project Hail Mary by Andy Weir.",
+    "images": ["/images/Project-Hail-Mary-Mockup-Web.jpg"]
+}

@@ -1,0 +1,15 @@
+---
+import NewProjectCard from "./NewProjectCard.astro";
+import OgProjectCard from "./OgProjectCard.astro";
+
+const { project } = Astro.props;
+const projectIsBook = project.data.projectType === "book";
+---
+
+{
+  projectIsBook ? (
+    <NewProjectCard project={project} />
+  ) : (
+    <OgProjectCard project={project} />
+  )
+}
