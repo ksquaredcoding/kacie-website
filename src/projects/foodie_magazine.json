@@ -1,6 +1,7 @@
 {
     "title": "Foodie Magazine",
     "year": [2025],
+    "projectType": "magazine",
     "order": 6,
     "client": "Personal Project",
     "blurb": "A vegan edition of the fictional magazine, Foodie, featuring a seasonal cover, several internal layouts, and a full-page ad.",

@@ -2,10 +2,12 @@
 const { project } = Astro.props;
 const buttonId = `button-${project.data.order}`;
 let hoverId = `hover-${project.data.order}`;
+const isMagazine = project.data.projectType === "magazine";
+const colSpan = isMagazine ? "col-span-2" : "col-span-1";
 ---
 
 <div
-  class="relative cursor-pointer p-6 h-full overflow-hidden"
+  class=`relative cursor-pointer p-6 h-full overflow-hidden ${colSpan}`
   id=`${buttonId}`
 >
   <div
@@ -51,12 +53,22 @@ let hoverId = `hover-${project.data.order}`;
   </div>
 
   <div class="w-full justify-center flex">
-    <img
-      src=`${project.data.images[0]}`
-      alt=`${project.data.title} project image`
-      class="w-max md:max-w-2xl block h-80 md:h-120 lg:h-160 object-contain object-center aspect-4/5"
-      data-dynamic="alt src"
-    />
+    {
+      isMagazine ? 
+      <img
+        src=`${project.data.images[0]}`
+        alt=`${project.data.title} project image`
+        class="w-max block h-80 md:h-160 lg:h-180 object-contain object-center"
+        data-dynamic="alt src"
+      />
+      :
+      <img
+        src=`${project.data.images[0]}`
+        alt=`${project.data.title} project image`
+        class="w-max md:max-w-2xl block h-80 md:h-120 lg:h-160 object-contain object-center aspect-5/4"
+        data-dynamic="alt src"
+      />
+    }
   </div>
 </div>
 <script

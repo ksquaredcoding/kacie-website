@@ -3,11 +3,12 @@ import NewProjectCard from "./NewProjectCard.astro";
 import OgProjectCard from "./OgProjectCard.astro";
 
 const { project } = Astro.props;
-const projectIsBook = project.data.projectType === "book";
+const projectIsBook = project.data.projectType == "book";
+const projectIsMagazine = project.data.projectType == "magazine";
 ---
 
 {
-  projectIsBook ? (
+  projectIsBook || projectIsMagazine ? (
     <NewProjectCard project={project} />
   ) : (
     <OgProjectCard project={project} />
