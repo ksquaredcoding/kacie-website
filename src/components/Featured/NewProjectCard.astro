@@ -1,16 +1,15 @@
 ---
 const { project } = Astro.props;
-let hover = false;
+const buttonId = `button-${project.data.order}`;
+let hoverId = `hover-${project.data.order}`;
 ---
 
 <div
   class="relative cursor-pointer p-6 w-full h-full overflow-hidden"
-  onclick=`openModal("${project.id}")`
-  onmouseenter="hover = true"
-  onmouseleave="hover = false"
+  id=`${buttonId}`
 >
   <div
-    class="text-white/0 bg-white/0 text-center z-10 h-full hover:bg-white/80 absolute flex flex-col justify-center align-middle transition-transform duration-700 hover:text-primary"
+    class="text-white/0 bg-white/0 text-center z-10 h-full hover:bg-white/80 absolute flex flex-col justify-center align-middle transition-transform duration-700 hover:text-slate-700"
   >
     <div class="w-fit">
       <h3
@@ -27,6 +26,28 @@ let hover = false;
       </p>
     </div>
   </div>
+
+  <div id=`${hoverId}` class="hidden">
+    <div
+      class="text-center flex z-10 h-full bg-white/80 absolute flex-col justify-center align-middle transition-transform duration-700 md:hidden text-slate-700"
+    >
+      <div class="w-fit">
+        <h3
+          class="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl transition-colors mb-2"
+          data-dynamic="text"
+        >
+          {project.data.title}
+        </h3>
+        <p
+          class="mt-2 font-paragraph font-normal text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed overflow-y-auto max-h-40 pb-6"
+          data-dynamic="text"
+        >
+          {project.data.blurb}
+        </p>
+      </div>
+    </div>
+  </div>
+
   <img
     src=`${project.data.images[0]}`
     alt=`${project.data.title} project image`
@@ -34,3 +55,21 @@ let hover = false;
     data-dynamic="alt src"
   />
 </div>
+<script
+  define:vars={{ button: buttonId, hover: hoverId, projectId: project.id }}
+>
+  function handleClick() {
+    if (window.visualViewport?.width >= 768) {
+      return document.openModal(`${projectId}`);
+    }
+    let removeClass = hoverArea?.classList.contains("hidden")
+      ? "hidden"
+      : "block";
+    let addClass = hoverArea?.classList.contains("block") ? "hidden" : "block";
+    hoverArea?.classList.remove(removeClass);
+    hoverArea?.classList.add(addClass);
+  }
+  const projectButton = document.getElementById(button);
+  const hoverArea = document.getElementById(hover);
+  projectButton?.addEventListener("click", handleClick);
+</script>
