@@ -5,11 +5,11 @@ let hoverId = `hover-${project.data.order}`;
 ---
 
 <div
-  class="relative cursor-pointer p-6 w-full h-full overflow-hidden"
+  class="relative cursor-pointer p-6 h-full overflow-hidden"
   id=`${buttonId}`
 >
   <div
-    class="text-white/0 bg-white/0 text-center z-10 h-full hover:bg-white/80 absolute flex flex-col justify-center align-middle transition-transform duration-700 hover:text-slate-700"
+    class="text-white/0 bg-white/0 text-center z-10 h-full hover:bg-white/80 absolute flex flex-col justify-center align-middle transition-transform duration-700 hover:text-slate-800"
   >
     <div class="w-fit">
       <h3
@@ -27,33 +27,37 @@ let hoverId = `hover-${project.data.order}`;
     </div>
   </div>
 
-  <div id=`${hoverId}` class="hidden">
+  <div id=`${hoverId}` class="hidden w-full justify-center">
     <div
-      class="text-center flex z-10 h-full bg-white/80 absolute flex-col justify-center align-middle transition-transform duration-700 md:hidden text-slate-700"
+      class="text-center flex z-10 h-full w-3/4 bg-white/80 absolute flex-col justify-center align-middle transition-transform duration-700 md:hidden text-slate-800"
     >
-      <div class="w-fit">
-        <h3
-          class="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl transition-colors mb-2"
-          data-dynamic="text"
-        >
-          {project.data.title}
-        </h3>
-        <p
-          class="mt-2 font-paragraph font-normal text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed overflow-y-auto max-h-40 pb-6"
-          data-dynamic="text"
-        >
-          {project.data.blurb}
-        </p>
+      <div class="w-full justify-center flex">
+        <div class="w-70 px-6">
+          <h3
+            class="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl transition-colors mb-2"
+            data-dynamic="text"
+          >
+            {project.data.title}
+          </h3>
+          <p
+            class="mt-2 font-paragraph font-normal text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed overflow-y-auto max-h-40 pb-6"
+            data-dynamic="text"
+          >
+            {project.data.blurb}
+          </p>
+        </div>
       </div>
     </div>
   </div>
 
-  <img
-    src=`${project.data.images[0]}`
-    alt=`${project.data.title} project image`
-    class="w-full max-w-2xl block h-80 md:h-120 lg:h-160 object-contain object-center aspect-5/4"
-    data-dynamic="alt src"
-  />
+  <div class="w-full justify-center flex">
+    <img
+      src=`${project.data.images[0]}`
+      alt=`${project.data.title} project image`
+      class="w-max md:max-w-2xl block h-80 md:h-120 lg:h-160 object-contain object-center aspect-4/5"
+      data-dynamic="alt src"
+    />
+  </div>
 </div>
 <script
   define:vars={{ button: buttonId, hover: hoverId, projectId: project.id }}
@@ -64,8 +68,8 @@ let hoverId = `hover-${project.data.order}`;
     }
     let removeClass = hoverArea?.classList.contains("hidden")
       ? "hidden"
-      : "block";
-    let addClass = hoverArea?.classList.contains("block") ? "hidden" : "block";
+      : "flex";
+    let addClass = hoverArea?.classList.contains("flex") ? "hidden" : "flex";
     hoverArea?.classList.remove(removeClass);
     hoverArea?.classList.add(addClass);
   }
