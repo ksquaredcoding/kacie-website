@@ -12,19 +12,19 @@ const projects = (await getCollection("projects")).sort(
 
 <section
   id="work"
-  class="py-2 mb-8 md:py-4 lg:py-7 xl:py-10 px-6 max-w-400 mx-auto flex flex-col items-center"
+  class="mx-auto mb-8 flex max-w-400 flex-col items-center px-6 py-2 md:py-4 lg:py-7 xl:py-10"
   transition:animate="fade"
 >
-  <div class="text-center mt-1 mb-4 md:mb-8">
+  <div class="mt-1 mb-4 text-center md:mb-8">
     <div style="opacity: 1; transform: none;">
       <h2
-        class="font-heading text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary mb-2 md:mb-4 lg:mb-6"
+        class="mb-2 font-heading text-2xl text-primary md:mb-4 md:text-3xl lg:mb-6 lg:text-4xl xl:text-5xl"
       >
         Featured Projects
       </h2>
     </div>
   </div>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 w-full md:w-3/4 gap-y-6">
+  <div class="grid w-full grid-cols-1 gap-3 gap-y-6 md:w-3/4 lg:grid-cols-2">
     {
       projects.map(
         (project: {

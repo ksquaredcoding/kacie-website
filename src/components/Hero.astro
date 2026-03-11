@@ -3,30 +3,30 @@ import background from "../../public/images/Hero-Image-Web.jpg";
 ---
 
 <div
-  class="min-h-[60vh] md:min-h-[75vh] lg:min-h-[90vh] bg-background pb-0 md:pb-8"
+  class="min-h-[60vh] bg-background pb-0 md:min-h-[75vh] md:pb-8 lg:min-h-[90vh]"
 >
   <section
-    class="mb-4 relative w-full mx-0 min-h-[60vh] lg:min-h-[90vh] flex items-center h-full justify-center overflow-hidden"
+    class="relative mx-0 mb-4 flex h-full min-h-[60vh] w-full items-center justify-center overflow-hidden lg:min-h-[90vh]"
   >
     <div class="absolute inset-0 z-0">
       <img
-        class="w-full h-full object-cover object-[52%] object-view-inset block md:hidden"
+        class="object-view-inset block h-full w-full object-cover object-[52%] md:hidden"
         src={background.src}
         alt=""
         fetchpriority="high"
       />
       <img
-        class="w-full h-full object-cover hidden md:block"
+        class="hidden h-full w-full object-cover md:block"
         src={background.src}
         alt=""
         fetchpriority="high"
       />
     </div>
-    <div class="flex flex-col w-1/2 h-[60vh] md:h-[70vh] justify-end items-end">
-      <div class="relative z-10 text-center px-6 max-w-4xl">
+    <div class="flex h-[60vh] w-1/2 flex-col items-end justify-end md:h-[70vh]">
+      <div class="relative z-10 max-w-4xl px-6 text-center">
         <div style="opacity: 1; transform: none;">
           <h1
-            class="font-heading hidden text-4xl lg:text-5xl text-primary mb-6 leading-tight"
+            class="mb-6 hidden font-heading text-4xl leading-tight text-primary lg:text-5xl"
           >
             Graphic Designer & Creative
           </h1>

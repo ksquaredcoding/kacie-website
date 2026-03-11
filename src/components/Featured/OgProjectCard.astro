@@ -5,8 +5,8 @@ const projectIsMarketing = project.data.title == "Social Media Graphics";
 
 {
   projectIsMarketing && (
-    <div class="w-full text-center md:col-span-2 pt-6 h-min">
-      <h3 class="font-heading text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-primary mb-2 md:mb-4 lg:mb-6">
+    <div class="h-min w-full pt-6 text-center md:col-span-2">
+      <h3 class="mb-2 font-heading text-3xl text-primary md:mb-4 md:text-4xl lg:mb-6 lg:text-5xl xl:text-6xl">
         Marketing
       </h3>
     </div>
@@ -14,28 +14,28 @@ const projectIsMarketing = project.data.title == "Social Media Graphics";
 }
 <div class="col-span-1 lg:col-span-2">
   <div
-    class="border-foreground/10 cursor-pointer h-124 md:h-144 lg:h-158 xl:h-194 2xl:h-214 text-foreground group overflow-hidden border shadow-xl hover:shadow-2xl transition-all duration-500 bg-background rounded-2xl"
+    class="group h-124 cursor-pointer overflow-hidden rounded-2xl border border-foreground/10 bg-background text-foreground shadow-xl transition-all duration-500 hover:shadow-2xl md:h-144 lg:h-158 xl:h-194 2xl:h-214"
     onclick=`openModal("${project.id}")`
   >
     <div class="relative">
       <img
         src=`${project.data.images[0]}`
         alt=`${project.data.title} project image`
-        class="w-full h-60 md:h-80 lg:h-100 xl:h-120 2xl:h-140 object-scale-down hover:scale-110 transition-transform duration-700"
+        class="h-60 w-full object-scale-down transition-transform duration-700 hover:scale-110 md:h-80 lg:h-100 xl:h-120 2xl:h-140"
         width="400"
         data-dynamic="alt src"
       />
     </div>
     <div class="p-6">
       <h3
-        class="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl text-primary mb-2 group-hover:text-secondary transition-colors"
+        class="mb-2 font-heading text-xl text-primary transition-colors group-hover:text-secondary md:text-2xl lg:text-3xl xl:text-4xl"
         data-dynamic="text"
       >
         {project.data.title}
       </h3>
       <div class="overflow-y-scroll">
         <p
-          class="font-paragraph text-black font-normal text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed overflow-y-auto max-h-40 pb-6"
+          class="font-paragraph max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal text-black md:text-lg lg:text-xl xl:text-2xl"
           data-dynamic="text"
         >
           {project.data.blurb}
