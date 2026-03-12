@@ -2,15 +2,15 @@
 const { project } = Astro.props;
 const buttonId = `button-${project.id}`;
 const hoverId = `hover-${project.id}`;
-const isMagazine = project.data.projectType === "magazine";
-const colSpan = isMagazine ? "col-span-2" : "col-span-1";
+const isMagazine = project.data.projectType == "magazine";
+const colSpan = isMagazine ? " lg:col-span-2" : "";
 const imgContainerId = `img-container-${project.id}`;
 const imgSrc = project.data.images[0];
 const imgAlt = `${project.data.title} project image`;
 ---
 
 <div
-  class=`relative ${colSpan} h-full cursor-pointer overflow-hidden p-6`
+  class=`relative h-full cursor-pointer overflow-hidden p-6${colSpan}`
   id=`${buttonId}`
 >
   <div
@@ -66,7 +66,7 @@ const imgAlt = `${project.data.title} project image`;
         />
       ) : (
         <img
-          class="block h-80 w-min object-contain object-center md:h-100 md:max-w-2xl lg:h-120 xl:h-160"
+          class="block h-100 w-min object-contain object-center md:h-120 md:max-w-2xl lg:h-160"
           data-dynamic="alt src"
         />
       )
