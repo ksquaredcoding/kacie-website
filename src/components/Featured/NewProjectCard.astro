@@ -10,34 +10,36 @@ const imgAlt = `${project.data.title} project image`;
 ---
 
 <div
-  class=`relative cursor-pointer p-6 h-full overflow-hidden ${colSpan}`
+  class=`relative ${colSpan} h-full cursor-pointer overflow-hidden p-6`
   id=`${buttonId}`
 >
   <div
-    class="absolute z-10 flex h-full flex-col justify-center bg-white/0 text-center align-middle text-white/0 transition-transform duration-700 hover:bg-white/80 hover:text-slate-800"
+    class="absolute z-10 flex h-full flex-col items-center justify-center bg-white/0 text-center align-middle text-white/0 transition-transform duration-700 hover:bg-white/80 hover:text-slate-800"
   >
-    <div class="w-fit">
-      <h3
-        class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
-        data-dynamic="text"
-      >
-        {project.data.title}
-      </h3>
-      <p
-        class="font-paragraph mt-2 max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal md:text-lg lg:text-xl xl:text-2xl"
-        data-dynamic="text"
-      >
-        {project.data.blurb}
-      </p>
+    <div class="flex w-full justify-center">
+      <div class="w-2/3">
+        <h3
+          class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
+          data-dynamic="text"
+        >
+          {project.data.title}
+        </h3>
+        <p
+          class="font-paragraph mt-2 max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal md:text-lg lg:text-xl xl:text-2xl"
+          data-dynamic="text"
+        >
+          {project.data.blurb}
+        </p>
+      </div>
     </div>
   </div>
 
   <div id=`${hoverId}` class="hidden w-full justify-center">
     <div
-      class="absolute z-10 flex h-full w-3/4 flex-col justify-center bg-white/80 text-center align-middle text-slate-800 transition-transform duration-700 md:hidden"
+      class="absolute z-10 flex h-full flex-col items-center justify-center bg-white/80 text-center align-middle text-slate-800 transition-transform duration-700 md:hidden"
     >
       <div class="flex w-full justify-center">
-        <div class="w-70 px-6">
+        <div class="w-2/3">
           <h3
             class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
             data-dynamic="text"
@@ -59,12 +61,12 @@ const imgAlt = `${project.data.title} project image`;
     {
       isMagazine ? (
         <img
-          class="block h-80 w-max object-contain object-center md:h-160 lg:h-180"
+          class="block h-80 w-min object-contain object-center md:h-160 lg:h-180"
           data-dynamic="alt src"
         />
       ) : (
         <img
-          class="block aspect-5/4 h-80 w-max object-contain object-center md:h-120 md:max-w-2xl lg:h-160"
+          class="block h-80 w-min object-contain object-center md:h-100 md:max-w-2xl lg:h-120 xl:h-160"
           data-dynamic="alt src"
         />
       )
@@ -89,7 +91,6 @@ const imgAlt = `${project.data.title} project image`;
     .getElementsByTagName("img")[0];
 
   document.addEventListener("DOMContentLoaded", (ev) => {
-    console.log(imgContained);
     imgContained.src = imgSrc;
     imgContained.alt = imgAlt;
   });
