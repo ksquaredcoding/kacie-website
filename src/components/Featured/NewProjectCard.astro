@@ -1,9 +1,12 @@
 ---
 const { project } = Astro.props;
-const buttonId = `button-${project.data.order}`;
-let hoverId = `hover-${project.data.order}`;
+const buttonId = `button-${project.id}`;
+const hoverId = `hover-${project.id}`;
 const isMagazine = project.data.projectType === "magazine";
 const colSpan = isMagazine ? "col-span-2" : "col-span-1";
+const imgContainerId = `img-container-${project.id}`;
+const imgSrc = project.data.images[0];
+const imgAlt = `${project.data.title} project image`;
 ---
 
 <div
@@ -11,17 +14,17 @@ const colSpan = isMagazine ? "col-span-2" : "col-span-1";
   id=`${buttonId}`
 >
   <div
-    class="text-white/0 bg-white/0 text-center z-10 h-full hover:bg-white/80 absolute flex flex-col justify-center align-middle transition-transform duration-700 hover:text-slate-800"
+    class="absolute z-10 flex h-full flex-col justify-center bg-white/0 text-center align-middle text-white/0 transition-transform duration-700 hover:bg-white/80 hover:text-slate-800"
   >
     <div class="w-fit">
       <h3
-        class="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl transition-colors mb-2"
+        class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
         data-dynamic="text"
       >
         {project.data.title}
       </h3>
       <p
-        class="mt-2 font-paragraph font-normal text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed overflow-y-auto max-h-40 pb-6"
+        class="font-paragraph mt-2 max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal md:text-lg lg:text-xl xl:text-2xl"
         data-dynamic="text"
       >
         {project.data.blurb}
@@ -31,18 +34,18 @@ const colSpan = isMagazine ? "col-span-2" : "col-span-1";
 
   <div id=`${hoverId}` class="hidden w-full justify-center">
     <div
-      class="text-center flex z-10 h-full w-3/4 bg-white/80 absolute flex-col justify-center align-middle transition-transform duration-700 md:hidden text-slate-800"
+      class="absolute z-10 flex h-full w-3/4 flex-col justify-center bg-white/80 text-center align-middle text-slate-800 transition-transform duration-700 md:hidden"
     >
-      <div class="w-full justify-center flex">
+      <div class="flex w-full justify-center">
         <div class="w-70 px-6">
           <h3
-            class="font-heading text-xl md:text-2xl lg:text-3xl xl:text-4xl transition-colors mb-2"
+            class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
             data-dynamic="text"
           >
             {project.data.title}
           </h3>
           <p
-            class="mt-2 font-paragraph font-normal text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed overflow-y-auto max-h-40 pb-6"
+            class="font-paragraph mt-2 max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal md:text-lg lg:text-xl xl:text-2xl"
             data-dynamic="text"
           >
             {project.data.blurb}
@@ -52,28 +55,45 @@ const colSpan = isMagazine ? "col-span-2" : "col-span-1";
     </div>
   </div>
 
-  <div class="w-full justify-center flex">
+  <div id=`${imgContainerId}` class="flex w-full justify-center">
     {
-      isMagazine ? 
-      <img
-        src=`${project.data.images[0]}`
-        alt=`${project.data.title} project image`
-        class="w-max block h-80 md:h-160 lg:h-180 object-contain object-center"
-        data-dynamic="alt src"
-      />
-      :
-      <img
-        src=`${project.data.images[0]}`
-        alt=`${project.data.title} project image`
-        class="w-max md:max-w-2xl block h-80 md:h-120 lg:h-160 object-contain object-center aspect-5/4"
-        data-dynamic="alt src"
-      />
+      isMagazine ? (
+        <img
+          class="block h-80 w-max object-contain object-center md:h-160 lg:h-180"
+          data-dynamic="alt src"
+        />
+      ) : (
+        <img
+          class="block aspect-5/4 h-80 w-max object-contain object-center md:h-120 md:max-w-2xl lg:h-160"
+          data-dynamic="alt src"
+        />
+      )
     }
   </div>
 </div>
 <script
-  define:vars={{ button: buttonId, hover: hoverId, projectId: project.id }}
+  define:vars={{
+    button: buttonId,
+    hover: hoverId,
+    projectId: project.id,
+    imgContainerId: imgContainerId,
+    imgSrc: imgSrc,
+    imgAlt: imgAlt,
+  }}
 >
+  const projectButton = document.getElementById(button);
+  const hoverArea = document.getElementById(hover);
+  projectButton?.addEventListener("click", handleClick);
+  const imgContained = document
+    .getElementById(imgContainerId)
+    .getElementsByTagName("img")[0];
+
+  document.addEventListener("DOMContentLoaded", (ev) => {
+    console.log(imgContained);
+    imgContained.src = imgSrc;
+    imgContained.alt = imgAlt;
+  });
+
   function handleClick() {
     if (window.visualViewport?.width >= 768) {
       return document.openModal(`${projectId}`);
@@ -85,7 +105,4 @@ const colSpan = isMagazine ? "col-span-2" : "col-span-1";
     hoverArea?.classList.remove(removeClass);
     hoverArea?.classList.add(addClass);
   }
-  const projectButton = document.getElementById(button);
-  const hoverArea = document.getElementById(hover);
-  projectButton?.addEventListener("click", handleClick);
 </script>

@@ -1,11 +1,54 @@
 ---
+import type { RenderedContent } from "astro:content";
+import FeaturedList from "./Featured/FeaturedList.astro";
 import Modal from "./Featured/Modal.astro";
-import ParentProjectCard from "./Featured/ParentProjectCard.astro";
 import { getCollection } from "astro:content";
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
-const projects = (await getCollection("projects")).sort(
+const marketingProjects: {
+  id: string;
+  body?: string | undefined;
+  collection: "projects";
+  data: {
+    title: string;
+    blurb: string;
+    client: string;
+    images: string[];
+    order: number;
+    year?: number[] | undefined;
+    iframe?: string | undefined;
+    projectType?: string | undefined;
+  };
+  rendered?: RenderedContent | undefined;
+  filePath?: string | undefined;
+}[] = [];
+const bookProjects: {
+  id: string;
+  body?: string | undefined;
+  collection: "projects";
+  data: {
+    title: string;
+    blurb: string;
+    client: string;
+    images: string[];
+    order: number;
+    year?: number[] | undefined;
+    iframe?: string | undefined;
+    projectType?: string | undefined;
+  };
+  rendered?: RenderedContent | undefined;
+  filePath?: string | undefined;
+}[] = [];
+const projects = await getCollection("projects");
+projects.forEach((project) =>
+  ["book", "magazine"].includes(project.data.projectType ?? "")
+    ? bookProjects.push(project)
+    : marketingProjects.push(project)
+);
+
+bookProjects.sort((a, b) => b.data.order.valueOf() - a.data.order.valueOf());
+marketingProjects.sort(
   (a, b) => b.data.order.valueOf() - a.data.order.valueOf()
 );
 ---
@@ -18,30 +61,34 @@ const projects = (await getCollection("projects")).sort(
   <div class="mt-1 mb-4 text-center md:mb-8">
     <div style="opacity: 1; transform: none;">
       <h2
-        class="mb-2 font-heading text-2xl text-primary md:mb-4 md:text-3xl lg:mb-6 lg:text-4xl xl:text-5xl"
+        class="mb-2 font-heading text-2xl text-primary underline underline-offset-5 md:mb-4 md:text-3xl lg:mb-6 lg:text-4xl xl:text-5xl"
       >
         Featured Projects
       </h2>
     </div>
   </div>
-  <div class="grid w-full grid-cols-1 gap-3 gap-y-6 md:w-3/4 lg:grid-cols-2">
-    {
-      projects.map(
-        (project: {
-          id: string;
-          data: {
-            images: string[];
-            client: string;
-            year?: number[];
-            order?: number;
-            title: string;
-            blurb: string;
-            iframe?: string;
-            projectType?: string;
-          };
-        }) => <ParentProjectCard project={project} />
-      )
-    }
+
+  <div class="flex w-full flex-col items-center pt-6">
+    <div class="h-min w-full text-center">
+      <h3
+        class="mb-2 font-heading text-xl text-primary md:text-2xl lg:text-3xl xl:text-4xl"
+      >
+        Books & Magazines
+      </h3>
+    </div>
+    <FeaturedList projects={bookProjects} />
   </div>
+
+  <div class="flex w-full flex-col items-center pt-6">
+    <div class="h-min w-full text-center">
+      <h3
+        class="mb-2 font-heading text-xl text-primary md:text-2xl lg:text-3xl xl:text-4xl"
+      >
+        Marketing
+      </h3>
+    </div>
+    <FeaturedList projects={marketingProjects} />
+  </div>
+
   <Modal projects={projects} />
 </section>

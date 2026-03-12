@@ -1,0 +1,24 @@
+---
+import ParentProjectCard from "./ParentProjectCard.astro";
+const { projects } = Astro.props;
+---
+
+<div class="grid w-full grid-cols-1 gap-3 gap-y-6 md:w-3/4 lg:grid-cols-2">
+  {
+    projects.map(
+      (project: {
+        id: string;
+        data: {
+          images: string[];
+          client: string;
+          year?: number[];
+          order?: number;
+          title: string;
+          blurb: string;
+          iframe?: string;
+          projectType?: string;
+        };
+      }) => <ParentProjectCard project={project} />
+    )
+  }
+</div>
