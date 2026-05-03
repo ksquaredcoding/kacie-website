@@ -10,100 +10,102 @@ const imgAlt = `${project.data.title} project image`;
 ---
 
 <div
-  class=`relative h-full cursor-pointer overflow-hidden p-6${colSpan}`
-  id=`${buttonId}`
+	class=`relative h-full cursor-pointer overflow-hidden p-6${colSpan}`
+	id=`${buttonId}`
 >
-  <div
-    class="absolute z-10 flex h-full flex-col items-center justify-center bg-white/0 text-center align-middle text-white/0 transition-transform duration-700 hover:bg-white/80 hover:text-slate-800"
-  >
-    <div class="flex w-full justify-center">
-      <div class="w-2/3">
-        <h3
-          class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
-          data-dynamic="text"
-        >
-          {project.data.title}
-        </h3>
-        <p
-          class="font-paragraph mt-2 max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal md:text-lg lg:text-xl xl:text-2xl"
-          data-dynamic="text"
-        >
-          {project.data.blurb}
-        </p>
-      </div>
-    </div>
-  </div>
+	<div
+		class="absolute z-10 flex h-full w-full flex-col items-center justify-center bg-white/0 text-center align-middle text-white/0 transition-transform duration-700 hover:bg-white/80 hover:text-slate-800"
+	>
+		<div class="flex w-full justify-center">
+			<div class="w-2/3">
+				<h3
+					class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
+					data-dynamic="text"
+				>
+					{project.data.title}
+				</h3>
+				<p
+					class="font-paragraph mt-2 max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal md:text-lg lg:text-xl xl:text-2xl"
+					data-dynamic="text"
+				>
+					{project.data.blurb}
+				</p>
+			</div>
+		</div>
+	</div>
 
-  <div id=`${hoverId}` class="hidden w-full justify-center">
-    <div
-      class="absolute z-10 flex h-full flex-col items-center justify-center bg-white/80 text-center align-middle text-slate-800 transition-transform duration-700 md:hidden"
-    >
-      <div class="flex w-full justify-center">
-        <div class="w-2/3">
-          <h3
-            class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
-            data-dynamic="text"
-          >
-            {project.data.title}
-          </h3>
-          <p
-            class="font-paragraph mt-2 max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal md:text-lg lg:text-xl xl:text-2xl"
-            data-dynamic="text"
-          >
-            {project.data.blurb}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div id=`${hoverId}` class="hidden w-full justify-center">
+		<div
+			class="absolute z-10 flex h-full w-full flex-col items-center justify-center bg-white/80 text-center align-middle text-slate-800 transition-transform duration-700 md:hidden"
+		>
+			<div class="flex w-full justify-center">
+				<div class="w-2/3">
+					<h3
+						class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
+						data-dynamic="text"
+					>
+						{project.data.title}
+					</h3>
+					<p
+						class="font-paragraph mt-2 max-h-40 overflow-y-auto pb-6 text-base leading-relaxed font-normal md:text-lg lg:text-xl xl:text-2xl"
+						data-dynamic="text"
+					>
+						{project.data.blurb}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <div id=`${imgContainerId}` class="flex w-full justify-center">
-    {
-      isMagazine ? (
-        <img
-          class="block h-80 w-min object-contain object-center md:h-160 lg:h-180"
-          data-dynamic="alt src"
-        />
-      ) : (
-        <img
-          class="block h-100 w-min object-contain object-center md:h-120 md:max-w-2xl lg:h-160"
-          data-dynamic="alt src"
-        />
-      )
-    }
-  </div>
+	<div id=`${imgContainerId}` class="flex w-full justify-center">
+		{
+			isMagazine ? (
+				<img
+					class="block h-80 w-min object-contain object-center md:h-160 lg:h-180"
+					data-dynamic="alt src"
+				/>
+			) : (
+				<img
+					class="block h-100 w-min object-contain object-center md:h-120 md:max-w-2xl lg:h-160"
+					data-dynamic="alt src"
+				/>
+			)
+		}
+	</div>
 </div>
 <script
-  define:vars={{
-    button: buttonId,
-    hover: hoverId,
-    projectId: project.id,
-    imgContainerId: imgContainerId,
-    imgSrc: imgSrc,
-    imgAlt: imgAlt,
-  }}
+	define:vars={{
+		button: buttonId,
+		hover: hoverId,
+		projectId: project.id,
+		imgContainerId: imgContainerId,
+		imgSrc: imgSrc,
+		imgAlt: imgAlt,
+	}}
 >
-  const projectButton = document.getElementById(button);
-  const hoverArea = document.getElementById(hover);
-  projectButton?.addEventListener("click", handleClick);
-  const imgContained = document
-    .getElementById(imgContainerId)
-    .getElementsByTagName("img")[0];
+	const projectButton = document.getElementById(button);
+	const hoverArea = document.getElementById(hover);
+	projectButton?.addEventListener("click", handleClick);
+	const imgContained = document
+		.getElementById(imgContainerId)
+		.getElementsByTagName("img")[0];
 
-  document.addEventListener("DOMContentLoaded", (ev) => {
-    imgContained.src = imgSrc;
-    imgContained.alt = imgAlt;
-  });
+	document.addEventListener("DOMContentLoaded", (ev) => {
+		imgContained.src = imgSrc;
+		imgContained.alt = imgAlt;
+	});
 
-  function handleClick() {
-    if (window.visualViewport?.width >= 768) {
-      return document.openModal(`${projectId}`);
-    }
-    let removeClass = hoverArea?.classList.contains("hidden")
-      ? "hidden"
-      : "flex";
-    let addClass = hoverArea?.classList.contains("flex") ? "hidden" : "flex";
-    hoverArea?.classList.remove(removeClass);
-    hoverArea?.classList.add(addClass);
-  }
+	function handleClick() {
+		if (window.visualViewport?.width >= 768) {
+			return document.openModal(`${projectId}`);
+		}
+		let removeClass = hoverArea?.classList.contains("hidden")
+			? "hidden"
+			: "flex";
+		let addClass = hoverArea?.classList.contains("flex")
+			? "hidden"
+			: "flex";
+		hoverArea?.classList.remove(removeClass);
+		hoverArea?.classList.add(addClass);
+	}
 </script>
