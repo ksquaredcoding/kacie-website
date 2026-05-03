@@ -3,141 +3,148 @@ const { projects } = Astro.props;
 ---
 
 <div
-  id="myModal"
-  class="fixed top-0 left-0 z-10 hidden h-full w-full overflow-auto bg-white/40"
+	id="myModal"
+	class="fixed top-0 left-0 z-10 hidden h-full w-full overflow-auto bg-white/40"
 >
-  <!-- Modal content -->
-  <div class="mx-auto my-[15%] w-max border border-slate-500 bg-white p-5">
-    <span
-      id="close"
-      class="float-right text-3xl font-bold text-gray-300 hover:cursor-pointer hover:text-black focus:cursor-pointer focus:text-black"
-      >&times;</span
-    >
-    {}
-    <div id="modalImageContainer" class="relative hidden overflow-hidden">
-      <img
-        src=""
-        id="modalImage"
-        alt="Summer Music Fest Posters"
-        class="w-80 object-cover transition-transform duration-700 group-hover:scale-110 sm:w-100 md:w-160 lg:w-300"
-        data-dynamic="alt src"
-      />
-      <button
-        id="prevBtn"
-        class="absolute top-1/2 left-0 -translate-y-1/2 transform cursor-pointer rounded bg-gray-200 p-2"
-        >❮</button
-      >
-      <button
-        id="nextBtn"
-        class="absolute top-1/2 right-0 -translate-y-1/2 transform cursor-pointer rounded bg-gray-200 p-2"
-        >❯</button
-      >
-    </div>
-    <div id="modalIframeContainer" class="relative hidden overflow-hidden">
-      <iframe
-        id="modalIframe"
-        src=""
-        class="h-150 w-80 sm:w-100 md:h-200 md:w-160 lg:w-300"
-        seamless="seamless"
-        scrolling="no"
-        allow="autoplay; clipboard-read; clipboard-write"></iframe>
-    </div>
-  </div>
+	<!-- Modal content -->
+	<div class="mx-auto my-[15%] w-max border border-slate-500 bg-white p-5">
+		<span
+			id="close"
+			class="float-right text-3xl font-bold text-gray-300 hover:cursor-pointer hover:text-black focus:cursor-pointer focus:text-black"
+			>&times;</span
+		>
+		{}
+		<div id="modalImageContainer" class="relative hidden overflow-hidden">
+			<img
+				src=""
+				id="modalImage"
+				alt="Summer Music Fest Posters"
+				class="max-h-180 w-80 object-cover transition-transform duration-700 group-hover:scale-110 sm:w-100 md:w-160 lg:w-200"
+				data-dynamic="alt src"
+			/>
+			<button
+				id="prevBtn"
+				class="absolute top-1/2 left-0 -translate-y-1/2 transform cursor-pointer rounded bg-gray-100/90 px-4 py-2 text-3xl hover:scale-105 hover:text-secondary"
+				>❮</button
+			>
+			<button
+				id="nextBtn"
+				class="absolute top-1/2 right-0 -translate-y-1/2 transform cursor-pointer rounded bg-gray-100/90 px-4 py-2 text-3xl hover:scale-105 hover:text-secondary"
+				>❯</button
+			>
+		</div>
+		<div id="modalIframeContainer" class="relative hidden overflow-hidden">
+			<iframe
+				id="modalIframe"
+				src=""
+				class="h-150 w-80 sm:w-100 md:h-200 md:w-160 lg:w-300"
+				seamless="seamless"
+				scrolling="no"
+				allow="autoplay; clipboard-read; clipboard-write"></iframe>
+		</div>
+	</div>
 </div>
 
 <style>
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
+	/* The Close Button */
+	.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
 
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+	.close:hover,
+	.close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
 </style>
 <script define:vars={{ projects }}>
-  // Get the modal
-  var modal = document.getElementById("myModal");
+	// Get the modal
+	var modal = document.getElementById("myModal");
 
-  // Get the <span> element that closes the modal
-  var span = document.getElementById("close");
+	// Get the <span> element that closes the modal
+	var span = document.getElementById("close");
 
-  // Get the image element
-  var modalImage = document.getElementById("modalImage");
+	// Get the image element
+	var modalImage = document.getElementById("modalImage");
 
-  var modalImageContainer = document.getElementById("modalImageContainer");
-  var modalIframeContainer = document.getElementById("modalIframeContainer");
+	var modalImageContainer = document.getElementById("modalImageContainer");
+	var modalIframeContainer = document.getElementById("modalIframeContainer");
 
-  var prevBtn = document.getElementById("prevBtn");
+	var prevBtn = document.getElementById("prevBtn");
 
-  var nextBtn = document.getElementById("nextBtn");
+	var nextBtn = document.getElementById("nextBtn");
 
-  var activeProject = null;
-  var currentImageIndex = 0;
+	var activeProject = null;
+	var currentImageIndex = 0;
 
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function () {
-    closeModal();
-  };
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function () {
+		closeModal();
+	};
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      closeModal();
-    }
-  };
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			closeModal();
+		}
+	};
 
-  window.onkeydown = function (event) {
-    if (event.key === "Escape" && modal.style.display === "block") {
-      closeModal();
-    }
-  };
+	window.onkeydown = function (event) {
+		if (event.key === "Escape" && modal.style.display === "block") {
+			closeModal();
+		}
+	};
 
-  function closeModal() {
-    modal.style.display = "none";
-    activeProject = null;
-    currentImageIndex = 0;
-    modalIframeContainer.classList.add("hidden");
-    modalImageContainer.classList.add("hidden");
-    modalIframeContainer.classList.remove("block");
-    modalImageContainer.classList.remove("block");
-  }
+	function closeModal() {
+		modal.style.display = "none";
+		activeProject = null;
+		currentImageIndex = 0;
+		modalIframeContainer.classList.add("hidden");
+		modalImageContainer.classList.add("hidden");
+		modalIframeContainer.classList.remove("block");
+		modalImageContainer.classList.remove("block");
+		prevBtn.style.display = "block";
+		nextBtn.style.display = "block";
+	}
 
-  function openModal(projectId) {
-    activeProject = projects.find((p) => p.id === projectId);
-    if (activeProject.data.iframe !== undefined) {
-      modalIframe.src = activeProject.data.iframe;
-      modalIframeContainer.classList.remove("hidden");
-      modalIframeContainer.classList.add("block");
-      prevBtn.style.display = "none";
-      nextBtn.style.display = "none";
-    } else {
-      modalImage.src = activeProject.data.images[0];
-      modalImageContainer.classList.remove("hidden");
-      modalImageContainer.classList.add("block");
-    }
-    modal.style.display = "block";
-  }
+	function openModal(projectId) {
+		activeProject = projects.find((p) => p.id === projectId);
+		if (activeProject.data.iframe !== undefined) {
+			modalIframe.src = activeProject.data.iframe;
+			modalIframeContainer.classList.remove("hidden");
+			modalIframeContainer.classList.add("block");
+			prevBtn.style.display = "none";
+			nextBtn.style.display = "none";
+		} else {
+			modalImage.src = activeProject.data.images[0];
+			modalImageContainer.classList.remove("hidden");
+			modalImageContainer.classList.add("block");
+		}
+		if (activeProject.data.images.length <= 1) {
+			prevBtn.style.display = "none";
+			nextBtn.style.display = "none";
+		}
+		modal.style.display = "block";
+	}
 
-  prevBtn.onclick = function () {
-    let prevIndex =
-      (currentImageIndex - 1 + activeProject.data.images.length) %
-      activeProject.data.images.length;
-    currentImageIndex = prevIndex;
-    modalImage.src = activeProject.data.images[prevIndex];
-  };
+	prevBtn.onclick = function () {
+		let prevIndex =
+			(currentImageIndex - 1 + activeProject.data.images.length) %
+			activeProject.data.images.length;
+		currentImageIndex = prevIndex;
+		modalImage.src = activeProject.data.images[prevIndex];
+	};
 
-  nextBtn.onclick = function () {
-    let nextIndex = (currentImageIndex + 1) % activeProject.data.images.length;
-    currentImageIndex = nextIndex;
-    modalImage.src = activeProject.data.images[nextIndex];
-  };
+	nextBtn.onclick = function () {
+		let nextIndex =
+			(currentImageIndex + 1) % activeProject.data.images.length;
+		currentImageIndex = nextIndex;
+		modalImage.src = activeProject.data.images[nextIndex];
+	};
 
-  document.openModal = openModal;
+	document.openModal = openModal;
 </script>
