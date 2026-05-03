@@ -7,10 +7,11 @@ const projectIsBook = project.data.projectType == "book";
 const projectIsMagazine = project.data.projectType == "magazine";
 ---
 
-{
+<NewProjectCard project={project} />
+<!-- {
   projectIsBook || projectIsMagazine ? (
     <NewProjectCard project={project} />
   ) : (
     <OgProjectCard project={project} />
   )
-}
+} -->

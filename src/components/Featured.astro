@@ -7,78 +7,76 @@ import { getCollection } from "astro:content";
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
 const marketingProjects: {
-  id: string;
-  body?: string | undefined;
-  collection: "projects";
-  data: {
-    title: string;
-    blurb: string;
-    client: string;
-    images: string[];
-    order: number;
-    year?: number[] | undefined;
-    iframe?: string | undefined;
-    projectType?: string | undefined;
-  };
-  rendered?: RenderedContent | undefined;
-  filePath?: string | undefined;
+	id: string;
+	body?: string | undefined;
+	collection: "projects";
+	data: {
+		title: string;
+		blurb: string;
+		client: string;
+		images: string[];
+		order: number;
+		year?: number[] | undefined;
+		iframe?: string | undefined;
+		projectType?: string | undefined;
+	};
+	rendered?: RenderedContent | undefined;
+	filePath?: string | undefined;
 }[] = [];
 const bookProjects: {
-  id: string;
-  body?: string | undefined;
-  collection: "projects";
-  data: {
-    title: string;
-    blurb: string;
-    client: string;
-    images: string[];
-    order: number;
-    year?: number[] | undefined;
-    iframe?: string | undefined;
-    projectType?: string | undefined;
-  };
-  rendered?: RenderedContent | undefined;
-  filePath?: string | undefined;
+	id: string;
+	body?: string | undefined;
+	collection: "projects";
+	data: {
+		title: string;
+		blurb: string;
+		client: string;
+		images: string[];
+		order: number;
+		year?: number[] | undefined;
+		iframe?: string | undefined;
+		projectType?: string | undefined;
+	};
+	rendered?: RenderedContent | undefined;
+	filePath?: string | undefined;
 }[] = [];
 const projects = await getCollection("projects");
 projects.forEach((project) =>
-  ["book", "magazine"].includes(project.data.projectType ?? "")
-    ? bookProjects.push(project)
-    : marketingProjects.push(project)
+	["book", "magazine"].includes(project.data.projectType ?? "")
+		? bookProjects.push(project)
+		: marketingProjects.push(project)
 );
 
 bookProjects.sort((a, b) => b.data.order.valueOf() - a.data.order.valueOf());
 marketingProjects.sort(
-  (a, b) => b.data.order.valueOf() - a.data.order.valueOf()
+	(a, b) => b.data.order.valueOf() - a.data.order.valueOf()
 );
 ---
 
 <section
-  id="work"
-  class="mx-auto mb-8 flex max-w-400 flex-col items-center px-6 py-2 md:py-4 lg:py-7 xl:py-10"
-  transition:animate="fade"
+	id="work"
+	class="mx-auto mb-8 flex max-w-400 flex-col items-center px-6 py-2 md:py-4 lg:py-7 xl:py-10"
+	transition:animate="fade"
 >
-  <div class="flex w-full flex-col items-center pt-6">
-    <div class="h-min w-full text-center">
-      <h3
-        class="mb-2 font-heading text-xl text-primary md:text-2xl lg:text-3xl xl:text-4xl"
-      >
-        Books & Magazines
-      </h3>
-    </div>
-    <FeaturedList projects={bookProjects} />
-  </div>
+	<div class="flex w-full flex-col items-center pt-6">
+		<div class="h-min w-full text-center">
+			<h3
+				class="mb-8 font-heading text-xl text-primary md:text-2xl xl:mb-14"
+			>
+				Editorial
+			</h3>
+		</div>
+		<FeaturedList projects={bookProjects} />
+	</div>
 
-  <div class="flex w-full flex-col items-center pt-6">
-    <div class="h-min w-full text-center">
-      <h3
-        class="mb-2 font-heading text-xl text-primary md:text-2xl lg:text-3xl xl:text-4xl"
-      >
-        Marketing
-      </h3>
-    </div>
-    <FeaturedList projects={marketingProjects} />
-  </div>
+	<div class="flex w-full flex-col items-center pt-6">
+		<div class="h-min w-full text-center">
+			<h3 class="mb-8 font-heading text-xl text-primary md:text-2xl">
+				Marketing
+			</h3>
+		</div>
+		<FeaturedList projects={marketingProjects} />
+	</div>
 
-  <Modal projects={projects} />
+	<Modal projects={projects} />
 </section>

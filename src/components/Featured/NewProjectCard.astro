@@ -2,22 +2,24 @@
 const { project } = Astro.props;
 const buttonId = `button-${project.id}`;
 const hoverId = `hover-${project.id}`;
-const isMagazine = project.data.projectType == "magazine";
-const colSpan = isMagazine ? " lg:col-span-2" : "";
+const isMagazineOrMarketing =
+	project.data.projectType == "magazine" ||
+	project.data.projectType == "marketing";
+const colSpan = isMagazineOrMarketing ? " xl:col-span-2" : " pb-8";
 const imgContainerId = `img-container-${project.id}`;
 const imgSrc = project.data.images[0];
 const imgAlt = `${project.data.title} project image`;
 ---
 
 <div
-	class=`relative h-full cursor-pointer overflow-hidden p-6${colSpan}`
+	class=`relative h-full cursor-pointer overflow-hidden py-6${colSpan}`
 	id=`${buttonId}`
 >
 	<div
 		class="absolute z-10 flex h-full w-full flex-col items-center justify-center bg-white/0 text-center align-middle text-white/0 transition-transform duration-700 hover:bg-white/80 hover:text-slate-800"
 	>
 		<div class="flex w-full justify-center">
-			<div class="w-2/3">
+			<div class="w-1/2">
 				<h3
 					class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
 					data-dynamic="text"
@@ -39,7 +41,7 @@ const imgAlt = `${project.data.title} project image`;
 			class="absolute z-10 flex h-full w-full flex-col items-center justify-center bg-white/80 text-center align-middle text-slate-800 transition-transform duration-700 md:hidden"
 		>
 			<div class="flex w-full justify-center">
-				<div class="w-2/3">
+				<div class="w-1/2">
 					<h3
 						class="mb-2 font-heading text-xl transition-colors md:text-2xl lg:text-3xl xl:text-4xl"
 						data-dynamic="text"
@@ -59,14 +61,14 @@ const imgAlt = `${project.data.title} project image`;
 
 	<div id=`${imgContainerId}` class="flex w-full justify-center">
 		{
-			isMagazine ? (
+			isMagazineOrMarketing ? (
 				<img
-					class="block h-80 w-min object-contain object-center md:h-160 lg:h-180"
+					class="block h-80 w-min rounded-2xl object-contain object-center md:h-160 lg:h-180"
 					data-dynamic="alt src"
 				/>
 			) : (
 				<img
-					class="block h-100 w-min object-contain object-center md:h-120 md:max-w-2xl lg:h-160"
+					class="block h-100 w-min rounded-2xl object-contain object-center md:h-120 md:max-w-2xl lg:h-160"
 					data-dynamic="alt src"
 				/>
 			)
